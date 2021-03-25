@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Photo Slider</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap" rel="stylesheet">
+    </head>
+    <body>
+    <style>
+        *{margin:0;padding:0;}
+        section{
+            width:100%;
+            height:100vh;
+            background-image:url("image7.jpg");
+            background-size:cover;
+            background-repeat:no-repeat;
+            color:white;
+            font-family: 'Oswald', sans-serif;
+            font-size:50px;
+            transition:1s ease-in-out;
+        }
+        section h1{
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+
+        }
+        .button{
+            display:block;
+            position:relative;
+            top:50%;
+        }
+        .b{
+            float:right;
+
+        }
+        .a{float:left;}
+        .x {
+        padding: 0px 18px;
+        background: #000000ad;
+        color: white;
+        border-radius: 50%;
+        font-size: 35px;
+        cursor:pointer;
+        }
+        .x:hover{background:black;}
+        </style>
+        
+        <section>
+            <h1>" Hellow world "</h1>
+        <div class="button">
+            <span class="x a" onclick="prev()"><</span>
+            <span class="x b" onclick="next()">></span>
+        </div>
+        </section>
+
+
+        <script>
+        var back=document.querySelector("section");
+        
+        var photos=["image7.jpg","image8.jpg","image9.jpg","image10.jpg"];
+        var count=0;
+        function next(){
+            count++;
+            if(count >=photos.length){
+                count=0;
+                back.style.backgroundImage="url('"+photos[count]+"')";
+            }else{
+                back.style.backgroundImage="url('"+photos[count]+"')";
+            }
+        }
+        function prev(){
+            count--;
+            if(count < 0){
+                count=photos.length-1;
+                back.style.backgroundImage="url('"+photos[count]+"')";
+            }else{
+                back.style.backgroundImage="url('"+photos[count]+"')";
+            }
+        }
+        
+        document.addEventListener("contextmenu",function(slider){
+            slider.preventDefault();
+        })
+        </script>
+    </body>
+</html>
